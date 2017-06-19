@@ -3,14 +3,32 @@ import { connect } from "react-redux";
 import * as actions from "../actions/actions";
 
 class Canvas extends Component {
-	color = event => {
+	state = {
+		activePaint: false
+	};
+	startPainting = event => {
 		const clickedRowIndex = Number(event.target.id.slice(4, 6));
 		const clickedColumnIndex = Number(event.target.id.slice(13, 15));
+		this.setState({ activePaint: true });
 		this.props.paint(
 			clickedRowIndex,
 			clickedColumnIndex,
 			this.props.currentColor
 		);
+	};
+	endPainting = event => {
+		this.setState({ activePaint: false });
+	};
+	handleMouseOver = event => {
+		if (this.state.activePaint === true) {
+			const clickedRowIndex = Number(event.target.id.slice(4, 6));
+			const clickedColumnIndex = Number(event.target.id.slice(13, 15));
+			this.props.paint(
+				clickedRowIndex,
+				clickedColumnIndex,
+				this.props.currentColor
+			);
+		}
 	};
 
 	componentWillMount() {
@@ -46,7 +64,9 @@ class Canvas extends Component {
 								height: cellSize,
 								backgroundColor: localColor
 							}}
-							onClick={this.color}
+							onMouseDown={this.startPainting}
+							onMouseUp={this.endPainting}
+							onMouseOver={this.handleMouseOver}
 						/>
 					);
 				});
