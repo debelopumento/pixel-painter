@@ -54,11 +54,22 @@ const currentToolReducer = (state = "brush", action) => {
 	}
 };
 
+const brushSizeReducer = (state = 1, action) => {
+	switch (action.type) {
+		case "UPDATE_BRUSH_SIZE": {
+			return action.payload;
+		}
+		default:
+			return state;
+	}
+};
+
 const allReducers = combineReducers({
 	resolution: resolutionReducer,
 	selectedColor: selectedColorReducer,
 	painting: paintingReducer,
-	currentTool: currentToolReducer
+	currentTool: currentToolReducer,
+	brushSize: brushSizeReducer
 });
 
 export default allReducers;

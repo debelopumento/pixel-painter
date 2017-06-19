@@ -5,6 +5,7 @@ import Canvas from "./canvas";
 import ColorPalette from "./colorPalette";
 import SelectedColor from "./selectedColor";
 import Tools from "./tools";
+import BrushSize from "./brushSize";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
         <Canvas /><SelectedColor />
         <ColorPalette />
         <Tools />
+        <BrushSize />
       </div>
     );
   }

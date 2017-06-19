@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-console.log(2);
 
 class SelectedColor extends Component {
-	componentWillMount() {
-		console.log(1, this.props.selectedColor);
-	}
+	componentWillMount() {}
 	render() {
 		console.log(this.props.selectedColor);
 

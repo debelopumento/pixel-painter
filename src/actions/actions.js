@@ -74,3 +74,8 @@ export const switchToEraser = () => dispatch => {
 	});
 	dispatch(updateCurrentColor(colors.defaultColor));
 };
+
+export const updateBrushSize = size => ({
+	type: "UPDATE_BRUSH_SIZE",
+	payload: size
+});
