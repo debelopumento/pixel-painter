@@ -25,11 +25,27 @@ class Tools extends Component {
 				<input
 					type="submit"
 					value="Brush"
+					style={{
+						backgroundColor: this.props.currentTool === "brush"
+							? "blue"
+							: "white",
+						color: this.props.currentTool === "brush"
+							? "white"
+							: "black"
+					}}
 					onClick={this.switchToBrush}
 				/>
 				<input
 					type="submit"
 					value="eraser"
+					style={{
+						backgroundColor: this.props.currentTool === "eraser"
+							? "blue"
+							: "white",
+						color: this.props.currentTool === "eraser"
+							? "white"
+							: "black"
+					}}
 					onClick={this.switchToEraser}
 				/>
 				<input type="submit" value="flood" onClick={this.flood} />

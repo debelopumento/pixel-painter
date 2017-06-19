@@ -68,5 +68,9 @@ export const switchToEraser = () => dispatch => {
 		type: "UPDATE_LASTSELECTEDCOLOR",
 		payload: null
 	});
+	dispatch({
+		type: "UPDATE_TOOL",
+		payload: "eraser"
+	});
 	dispatch(updateCurrentColor(colors.defaultColor));
 };

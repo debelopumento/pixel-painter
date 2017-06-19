@@ -14,17 +14,15 @@ const resolutionReducer = (
 };
 
 const selectedColorReducer = (
-	state = { currentColor: "white", lastSelectedColor: "white" },
+	state = { currentColor: "black", lastSelectedColor: "black" },
 	action
 ) => {
 	switch (action.type) {
 		case "UPDATE_CURRENT_COLOR": {
-			//console.log(3);
 			state = {
 				currentColor: action.payload,
 				lastSelectedColor: state.lastSelectedColor
 			};
-			//console.log(4, state);
 			return state;
 		}
 		case "UPDATE_LASTSELECTEDCOLOR": {
