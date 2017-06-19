@@ -3,6 +3,7 @@ import "./App.css";
 import { connect } from "react-redux";
 import Canvas from "./canvas";
 import ColorPalette from "./colorPalette";
+import SelectedColor from "./selectedColor";
 
 class App extends Component {
   render() {
@@ -11,7 +12,7 @@ class App extends Component {
         <div className="App-header">
           <h2>Pixel Painter</h2>
         </div>
-        <Canvas />
+        <Canvas /><SelectedColor />
         <ColorPalette />
       </div>
     );
