@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Canvas from "./canvas";
 import ColorPalette from "./colorPalette";
 import SelectedColor from "./selectedColor";
+import PaintMode from "./paintMode";
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
         </div>
         <Canvas /><SelectedColor />
         <ColorPalette />
+        <PaintMode />
       </div>
     );
   }
