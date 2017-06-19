@@ -4,35 +4,37 @@ import * as actions from "../actions/actions";
 
 class Canvas extends Component {
 	color = event => {
-		const position = event.target.id;
-		const clickedRowIndex = event.target.id.slice(4, 6);
-		const clickedColumnIndex = event.target.id.slice(13, 15);
-		console.log(clickedRowIndex, clickedColumnIndex);
+		const clickedRowIndex = Number(event.target.id.slice(4, 6));
+		const clickedColumnIndex = Number(event.target.id.slice(13, 15));
+		this.props.paint(
+			clickedRowIndex,
+			clickedColumnIndex,
+			this.props.currentColor
+		);
 	};
 
 	componentWillMount() {
 		this.props.initializePainting();
+		this.rowElement = [...Array(this.props.resolution.width).keys()];
+		this.rowNumber = [...Array(this.props.resolution.height).keys()];
 	}
 
 	render() {
-		if (this.props.painting !== null) {
-			const cellSize = this.props.resolution.cellSize;
-			const rowElement = [...Array(this.props.resolution.width).keys()];
-			const rowNumber = [...Array(this.props.resolution.height).keys()];
-			const painting = this.props.painting;
-			let rowIndex;
+		const painting = this.props.painting;
 
-			const grid = Object.keys(rowNumber).map(rowIndex => {
+		if (painting !== null) {
+			const cellSize = this.props.resolution.cellSize;
+			let rowIndex;
+			const grid = Object.keys(this.rowNumber).map(rowIndex => {
 				const twoDigitRowIndex = rowIndex < 10
 					? `0${rowIndex}`
 					: rowIndex.toString();
-				const row = Object.keys(rowElement).map(columnIndex => {
+				const row = Object.keys(this.rowElement).map(columnIndex => {
 					const twoDigitColumnIndex = columnIndex < 10
 						? `0${columnIndex}`
 						: columnIndex.toString();
 					const id = `row-${twoDigitRowIndex}column-${twoDigitColumnIndex}`;
 					const localColor = painting[rowIndex][columnIndex];
-					//console.log(painting[1]);
 
 					return (
 						<div
@@ -80,6 +82,7 @@ export default connect(
 		painting: storeState.painting
 	}),
 	{
-		initializePainting: actions.initializePainting
+		initializePainting: actions.initializePainting,
+		paint: actions.paint
 	}
 )(Canvas);
