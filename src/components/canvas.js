@@ -59,7 +59,7 @@ class Canvas extends Component {
 							key={columnIndex}
 							id={id}
 							style={{
-								border: "1px solid black",
+								border: "1px solid lightGrey",
 								width: cellSize,
 								height: cellSize,
 								backgroundColor: localColor

@@ -23,8 +23,18 @@ class ColorPalette extends Component {
 				/>
 			);
 		});
+		const rowWidth =
+			this.props.resolution.cellSize * this.props.resolution.width + 10;
+
 		return (
-			<div style={{ display: "flex" }}>
+			<div
+				style={{
+					display: "flex",
+					width: rowWidth,
+					margin: "auto",
+					marginTop: 15
+				}}
+			>
 				{colorCollection}
 			</div>
 		);
