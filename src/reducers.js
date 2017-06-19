@@ -13,10 +13,23 @@ const resolutionReducer = (
 	}
 };
 
-const currentColorReducer = (state = "white", action) => {
+const selectedColorReducer = (
+	state = { currentColor: "white", lastSelectedColor: "white" },
+	action
+) => {
 	switch (action.type) {
 		case "UPDATE_CURRENT_COLOR": {
-			return action.payload;
+			//console.log(3);
+			state = {
+				currentColor: action.payload,
+				lastSelectedColor: state.lastSelectedColor
+			};
+			//console.log(4, state);
+			return state;
+		}
+		case "UPDATE_LASTSELECTEDCOLOR": {
+			state.lastSelectedColor = state.currentColor;
+			return state;
 		}
 		default:
 			return state;
@@ -45,7 +58,7 @@ const currentToolReducer = (state = "brush", action) => {
 
 const allReducers = combineReducers({
 	resolution: resolutionReducer,
-	currentColor: currentColorReducer,
+	selectedColor: selectedColorReducer,
 	painting: paintingReducer,
 	currentTool: currentToolReducer
 });

@@ -12,10 +12,11 @@ class Tools extends Component {
 		this.props.floodColor();
 	};
 	switchToEraser = () => {
-		this.props.updateCurrentColor(colors.defaultColor);
+		this.props.switchToEraser();
 	};
 	switchToBrush = () => {
-		this.props.updateCurrentColor("black");
+		const lastSelectedColor = this.props.selectedColor.lastSelectedColor;
+		this.props.updateCurrentColor(lastSelectedColor);
 	};
 	render() {
 		return (
@@ -39,10 +40,12 @@ class Tools extends Component {
 
 export default connect(
 	storeState => ({
-		currentTool: storeState.currentTool
+		currentTool: storeState.currentTool,
+		selectedColor: storeState.selectedColor
 	}),
 	{
 		floodColor: actions.floodColor,
-		updateCurrentColor: actions.updateCurrentColor
+		updateCurrentColor: actions.updateCurrentColor,
+		switchToEraser: actions.switchToEraser
 	}
 )(Tools);

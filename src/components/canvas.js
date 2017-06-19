@@ -13,7 +13,7 @@ class Canvas extends Component {
 		this.props.paint(
 			clickedRowIndex,
 			clickedColumnIndex,
-			this.props.currentColor
+			this.props.selectedColor.currentColor
 		);
 	};
 	endPainting = event => {
@@ -26,7 +26,7 @@ class Canvas extends Component {
 			this.props.paint(
 				clickedRowIndex,
 				clickedColumnIndex,
-				this.props.currentColor
+				this.props.selectedColor.currentColor
 			);
 		}
 	};
@@ -101,7 +101,7 @@ class Canvas extends Component {
 export default connect(
 	storeState => ({
 		resolution: storeState.resolution,
-		currentColor: storeState.currentColor,
+		selectedColor: storeState.selectedColor,
 		painting: storeState.painting
 	}),
 	{

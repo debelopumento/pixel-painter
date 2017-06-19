@@ -24,7 +24,7 @@ export const initializePainting = () => dispatch => {
 };
 
 export const floodColor = () => dispatch => {
-	const selectedColor = store.getState().currentColor;
+	const selectedColor = store.getState().selectedColor.currentColor;
 	const width = store.getState().resolution.width;
 	const height = store.getState().resolution.height;
 	let row = [];
@@ -61,4 +61,12 @@ export const paint = (row, column, color) => dispatch => {
 		type: "UPDATE_PAINTING",
 		payload: newPainting
 	});
+};
+
+export const switchToEraser = () => dispatch => {
+	dispatch({
+		type: "UPDATE_LASTSELECTEDCOLOR",
+		payload: null
+	});
+	dispatch(updateCurrentColor(colors.defaultColor));
 };
