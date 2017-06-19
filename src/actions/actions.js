@@ -10,7 +10,7 @@ export const initializePainting = () => dispatch => {
 	const height = store.getState().resolution.height;
 	let row = [];
 	for (let i = 0; i < width; i++) {
-		row.push("#ddd");
+		row.push("#eee");
 	}
 	let painting = [];
 	for (let j = 0; j < height; j++) {

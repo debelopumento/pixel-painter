@@ -53,13 +53,16 @@ class Canvas extends Component {
 						: columnIndex.toString();
 					const id = `row-${twoDigitRowIndex}column-${twoDigitColumnIndex}`;
 					const localColor = painting[rowIndex][columnIndex];
-
+					const border = localColor === "#eee"
+						? `1px solid lightGrey`
+						: `1px solid ${localColor}`;
 					return (
 						<div
 							key={columnIndex}
 							id={id}
 							style={{
-								border: "1px solid lightGrey",
+								borderLeft: border,
+								borderTop: border,
 								width: cellSize,
 								height: cellSize,
 								backgroundColor: localColor
@@ -84,7 +87,7 @@ class Canvas extends Component {
 				);
 			});
 
-			const rowWidth = cellSize * this.props.resolution.width + 10;
+			const rowWidth = cellSize * this.props.resolution.width + 30;
 			return (
 				<div style={{ width: rowWidth, margin: "auto" }}>
 					{grid}
