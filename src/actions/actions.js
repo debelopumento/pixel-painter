@@ -1,4 +1,5 @@
 import store from "../store";
+import * as colors from "../components/colors";
 
 export const updateCurrentColor = color => ({
 	type: "UPDATE_CURRENT_COLOR",
@@ -10,7 +11,7 @@ export const initializePainting = () => dispatch => {
 	const height = store.getState().resolution.height;
 	let row = [];
 	for (let i = 0; i < width; i++) {
-		row.push("#eee");
+		row.push(colors.defaultColor);
 	}
 	let painting = [];
 	for (let j = 0; j < height; j++) {

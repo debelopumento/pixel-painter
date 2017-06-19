@@ -33,10 +33,21 @@ const paintingReducer = (state = null, action) => {
 	}
 };
 
+const currentToolReducer = (state = "brush", action) => {
+	switch (action.type) {
+		case "UPDATE_TOOL": {
+			return action.payload;
+		}
+		default:
+			return state;
+	}
+};
+
 const allReducers = combineReducers({
 	resolution: resolutionReducer,
 	currentColor: currentColorReducer,
-	painting: paintingReducer
+	painting: paintingReducer,
+	currentTool: currentToolReducer
 });
 
 export default allReducers;

@@ -1,15 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import colors from "./colors";
+import * as colors from "./colors";
 import * as actions from "../actions/actions";
+
 class ColorPalette extends Component {
 	getColor = event => {
 		const selectedColor = event.target.style.backgroundColor;
 		this.props.updateCurrentColor(selectedColor);
 	};
 	render() {
-		const colorCollection = Object.keys(colors).map(index => {
-			const localColor = colors[index];
+		const colorCollection = Object.keys(colors.colors).map(index => {
+			const localColor = colors.colors[index];
 			return (
 				<div
 					key={index}
