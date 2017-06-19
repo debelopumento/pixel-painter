@@ -23,9 +23,20 @@ const currentColorReducer = (state = "white", action) => {
 	}
 };
 
+const paintingReducer = (state = null, action) => {
+	switch (action.type) {
+		case "UPDATE_PAINTING": {
+			return action.payload;
+		}
+		default:
+			return state;
+	}
+};
+
 const allReducers = combineReducers({
 	resolution: resolutionReducer,
-	currentColor: currentColorReducer
+	currentColor: currentColorReducer,
+	painting: paintingReducer
 });
 
 export default allReducers;
