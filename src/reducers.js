@@ -13,8 +13,19 @@ const resolutionReducer = (
 	}
 };
 
+const currentColorReducer = (state = "white", action) => {
+	switch (action.type) {
+		case "UPDATE_CURRENT_COLOR": {
+			return action.payload;
+		}
+		default:
+			return state;
+	}
+};
+
 const allReducers = combineReducers({
-	resolution: resolutionReducer
+	resolution: resolutionReducer,
+	currentColor: currentColorReducer
 });
 
 export default allReducers;

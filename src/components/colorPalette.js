@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import colors from "./colors";
-
+import * as actions from "../actions/actions";
 class ColorPalette extends Component {
 	getColor = event => {
-		console.log(event.target.style.backgroundColor);
+		const selectedColor = event.target.style.backgroundColor;
+		this.props.updateCurrentColor(selectedColor);
 	};
 	render() {
 		const colorCollection = Object.keys(colors).map(index => {
@@ -30,6 +31,11 @@ class ColorPalette extends Component {
 	}
 }
 
-export default connect(storeState => ({
-	resolution: storeState.resolution
-}))(ColorPalette);
+export default connect(
+	storeState => ({
+		resolution: storeState.resolution
+	}),
+	{
+		updateCurrentColor: actions.updateCurrentColor
+	}
+)(ColorPalette);
