@@ -45,11 +45,18 @@ export const paint = (row, column, color) => dispatch => {
 	const oldPainting = store.getState().painting;
 	const width = store.getState().resolution.width;
 	const height = store.getState().resolution.height;
+	const brushSize = store.getState().brushSize;
 	let newPainting = [];
 	for (let i = 0; i < height; i++) {
 		let newPaintingRow = [];
 		for (let j = 0; j < width; j++) {
-			if (i === row && j === column) {
+			const brushRadius = (brushSize - 1) / 2;
+			if (
+				i >= row - brushRadius &&
+				i <= row + brushRadius &&
+				j >= column - brushRadius &&
+				j <= column + brushRadius
+			) {
 				newPaintingRow[j] = color;
 			} else {
 				newPaintingRow[j] = oldPainting[i][j];
