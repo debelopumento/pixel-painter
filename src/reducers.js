@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-const firstReducer = (state = null, action) => {
+const resolutionReducer = (state = { width: 15, height: 10 }, action) => {
 	switch (action.type) {
 		case "UPDATE_FIRST_REDUCER": {
 			return action.payload;
@@ -11,7 +11,7 @@ const firstReducer = (state = null, action) => {
 };
 
 const allReducers = combineReducers({
-	firstProp: firstReducer
+	resolution: resolutionReducer
 });
 
 export default allReducers;
