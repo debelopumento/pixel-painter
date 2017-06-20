@@ -1,6 +1,16 @@
 import store from "../store";
 import * as colors from "../components/colors";
 
+export const updateCanvasWidth = width => ({
+	type: "UPDATE_WIDTH",
+	payload: width
+});
+
+export const updateCanvasHeight = height => ({
+	type: "UPDATE_HEIGHT",
+	payload: height
+});
+
 export const updateCurrentColor = color => ({
 	type: "UPDATE_CURRENT_COLOR",
 	payload: color

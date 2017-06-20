@@ -33,21 +33,20 @@ class Canvas extends Component {
 
 	componentWillMount() {
 		this.props.initializePainting();
-		this.rowElement = [...Array(this.props.resolution.width).keys()];
-		this.rowNumber = [...Array(this.props.resolution.height).keys()];
 	}
 
 	render() {
+		const rowElement = [...Array(this.props.resolution.width).keys()];
+		const rowNumber = [...Array(this.props.resolution.height).keys()];
 		const painting = this.props.painting;
-
 		if (painting !== null) {
 			const cellSize = this.props.resolution.cellSize;
 			let rowIndex;
-			const grid = Object.keys(this.rowNumber).map(rowIndex => {
+			const grid = Object.keys(rowNumber).map(rowIndex => {
 				const twoDigitRowIndex = rowIndex < 10
 					? `0${rowIndex}`
 					: rowIndex.toString();
-				const row = Object.keys(this.rowElement).map(columnIndex => {
+				const row = Object.keys(rowElement).map(columnIndex => {
 					const twoDigitColumnIndex = columnIndex < 10
 						? `0${columnIndex}`
 						: columnIndex.toString();
@@ -87,7 +86,8 @@ class Canvas extends Component {
 				);
 			});
 
-			const rowWidth = cellSize * this.props.resolution.width + 30;
+			const rowWidth = cellSize * this.props.resolution.width;
+			console.log(rowWidth, cellSize, this.props.resolution.width);
 			return (
 				<div style={{ width: rowWidth, margin: "auto" }}>
 					{grid}

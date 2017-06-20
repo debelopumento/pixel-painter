@@ -24,14 +24,12 @@ class ColorPalette extends Component {
 				/>
 			);
 		});
-		const rowWidth =
-			this.props.resolution.cellSize * this.props.resolution.width + 10;
 
 		return (
 			<div
 				style={{
 					display: "flex",
-					width: rowWidth,
+					width: 500,
 					margin: "auto",
 					marginTop: 15
 				}}

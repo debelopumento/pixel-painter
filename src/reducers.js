@@ -5,8 +5,19 @@ const resolutionReducer = (
 	action
 ) => {
 	switch (action.type) {
-		case "UPDATE_FIRST_REDUCER": {
-			return action.payload;
+		case "UPDATE_WIDTH": {
+			return {
+				width: action.payload,
+				height: state.height,
+				cellSize: state.cellSize
+			};
+		}
+		case "UPDATE_HEIGHT": {
+			return {
+				width: state.width,
+				height: action.payload,
+				cellSize: state.cellSize
+			};
 		}
 		default:
 			return state;
