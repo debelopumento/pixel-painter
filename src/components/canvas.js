@@ -87,7 +87,6 @@ class Canvas extends Component {
 			});
 
 			const rowWidth = cellSize * this.props.resolution.width;
-			console.log(rowWidth, cellSize, this.props.resolution.width);
 			return (
 				<div style={{ width: rowWidth, margin: "auto" }}>
 					{grid}
